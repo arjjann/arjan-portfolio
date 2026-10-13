@@ -176,9 +176,6 @@ function ArmIllustration() {
         />
       </div>
 
-      <div className="arm-caption">
-        <span>Robotics &amp; mechanical design</span>
-      </div>
     </div>
   );
 }
@@ -201,9 +198,7 @@ export default function Home() {
       <header className="nav-wrap">
         <a className="brand" href="#top" aria-label="Arjan Bista home">
           <span className="brand-mark"> <span></span></span>
-          <span className="brand-name">
-            ARJAN BISTA<small>MECHANICAL ENGINEERING STUDENT</small>
-          </span>
+       
         </a>
 
         <button className="mobile-toggle" aria-label="Toggle navigation" onClick={() => setMobileOpen(!mobileOpen)}>
@@ -226,9 +221,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="hero section-pad" id="top">
         <div className="hero-copy">
-          <div className="eyebrow">
-            <span className="eyebrow-line" /> MECHANICAL ENGINEERING · ROBOTICS
-          </div>
+        
           <h1>
             Arjan Bista<br />
             <em></em>

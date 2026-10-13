@@ -283,7 +283,7 @@ h1 em,h2 em
 .arm-stage {
     position: relative;
     width: 100%;
-    min-height: 420px;
+    min-height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
