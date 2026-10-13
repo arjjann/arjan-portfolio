@@ -38,15 +38,16 @@ const projects: Project[] = [
     title: 'ABU Robocon',
     category: 'Robotics',
     tags: ['Robotics', 'Mechanical Design', 'Fabrication'],
-    image: 'https://images.unsplash.com/photo-1561144257-e32e8efc6b5a?auto=format&fit=crop&w=1200&q=85',
-    alt: 'Robotics competition arena',
+    image: 'models/IMG_E6202.JPG',
+    alt: 'Robocon Team 2025',
     summary: 'Designed, fabricated and assembled competition robots as part of the Robotics Club, Pulchowk Campus team.',
     role: 'Robot design, fabrication, assembly and team coordination across the 2023, 2024 and 2025 seasons.',
     details: [
       'Contributed to iterative robot design and mechanical integration.',
-      'Worked hands-on with fabrication, assembly and testing.',
+      'Worked  with fabrication, assembly and testing.',
       'Participated in ABU Robocon seasons in 2023, 2024 and 2025.'
-    ]
+    ],
+    gallery: ['/models/R1.png', '/models/robor2.o_bg.png']
   },
   {
     id: 'clay-printer',
@@ -54,7 +55,7 @@ const projects: Project[] = [
     title: 'Clay 3D Printer',
     category: 'Manufacturing',
     tags: ['Manufacturing', 'Prototyping', 'Mechanisms'],
-    image: 'https://images.unsplash.com/photo-1631556097152-c39479bbff8e?auto=format&fit=crop&w=1200&q=85',
+    image: 'models/IMG_E9894.JPG',
     alt: '3D printing machine',
     summary: 'Adapted an FDM-style 3D printer for clay extrusion as part of the STEAM initiative in Nepal.',
     role: 'Mechanical conversion, extrusion mechanism and prototype development.',
@@ -69,11 +70,11 @@ const projects: Project[] = [
     number: '03',
     title: 'Zip Coaster Roller Assembly',
     category: 'Mechanical Design',
-    tags: ['CAD', 'Mechanical Design', 'Manufacturing'],
-    image: 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1200&q=85',
+    tags: ['CAD', 'Mechanical Design','Optimization'],
+    image: 'models/Roller_IV.png',
     alt: 'Mechanical engineering workshop',
     summary: 'Designed a roller assembly for the roller pipe coaster at Nagarkot Zip Coaster.',
-    role: 'CAD design, assembly development and manufacturing drawings.',
+    role: 'CAD design, assembly development ,manufacturing drawings and optimization',
     details: [
       'Developed parts and assemblies in CAD.',
       'Considered fit, manufacturability, compactness and assembly access.',
@@ -86,7 +87,7 @@ const projects: Project[] = [
     title: 'Robotic Arm Manipulation with RL',
     category: 'AI & Simulation',
     tags: ['Robotics', 'Simulation', 'Python'],
-    image: 'https://images.unsplash.com/photo-1563207153-f403bf289096?auto=format&fit=crop&w=1200&q=85',
+    image: 'models/Rl robotic arm.png',
     alt: 'Robotic arm in a laboratory',
     summary: 'Trained a simulated robotic arm to reach a target using Proximal Policy Optimization (PPO).',
     role: 'Simulation environment, reward design and reinforcement-learning experiments.',
@@ -119,7 +120,7 @@ const filters = ['All', 'Mechanical Design', 'Robotics', 'Manufacturing', 'AI & 
 function ArmIllustration() {
   return (
     <div className="arm-stage" aria-label="Mechanical systems project showcase">
-      <div className="stage-label">MECHANICAL SYSTEMS / 01</div>
+      {/* <div className="stage-label">MECHANICAL SYSTEMS / 01</div> */}
 
       {/* Floating & Layered Media Container */}
       <div className="arm-visual-wrapper">
@@ -141,8 +142,8 @@ function ArmIllustration() {
       </div>
 
       <div className="arm-caption">
-        <span>Robotics &amp; mechanical design</span>
-        <span>01 — 05</span>
+        <span>Robotics  mechanical design &amp; fabrication</span>
+        {/* <span>01 — 05</span> */}
       </div>
     </div>
   );
@@ -177,11 +178,11 @@ export default function Home() {
         </button>
 
         <nav className={mobileOpen ? 'nav-links open' : 'nav-links'}>
-          <a href="#work" onClick={closeMenu}>
-            Work
-          </a>
           <a href="#about" onClick={closeMenu}>
             About
+          </a>
+          <a href="#work" onClick={closeMenu}>
+            Work
           </a>
           <a href="#skills" onClick={closeMenu}>
             Skills
@@ -199,14 +200,14 @@ export default function Home() {
       <section className="hero section-pad" id="top">
         <div className="hero-copy">
           <div className="eyebrow">
-            <span className="eyebrow-line" /> MECHANICAL ENGINEERING · ROBOTICS ·{ /* AUTOMATION} */}
+            <span className="eyebrow-line" /> MECHANICAL ENGINEERING · ROBOTICS { /* AUTOMATION} */}
           </div>
           <h1>
             Arjan Bista<br />
             <em></em>
           </h1>
           <p className="hero-description">
-            I’m an undergraduate mechanical engineering student interested in designing mechanical systems, building robots, and exploring intelligent automation through hands-on engineering.
+            I’m an undergraduate mechanical engineering student at Pulchowk Campus(IOE).
           </p>
           <div className="hero-actions">
             <a className="button button-dark" href="#work">
@@ -217,23 +218,74 @@ export default function Home() {
             </a>
           </div>
           <div className="hero-footnote">
-            <span className="status-dot" /> OPEN TO INTERNSHIPS, RESEARCH &amp; COLLABORATION
+            {/* <span className="status-dot" /> OPEN TO INTERNSHIPS, RESEARCH &amp; COLLABORATION */}
           </div>
         </div>
         <ArmIllustration />
       </section>
+       {/* About Section */}
+      <section className="about-section section-pad" id="about">
+        <div className="about-left">
+          <div className="eyebrow">A LITTLE ABOUT ME</div>
+          <h2>
+            Curious by nature.<br />
+            <em>Engineer by practice.</em>
+          </h2>
+          <p>I’m an undergraduate mechanical engineering student at Pulchowk Campus, Institute of Engineering, Tribhuvan University. I enjoy working across the full engineering process—from sketching and CAD to fabrication, simulation and testing.</p>
+          <p>My work sits at the intersection of mechanical design, robotics and intelligent systems. I’m especially interested in how thoughtful design and accessible technology can solve practical problems.</p>
+          <a className="text-link" href="#contact">
+            More about my work <ArrowUpRight size={15} />
+          </a>
+        </div>
+
+        <div className="about-right">
+          <div className="about-stat">
+            <span>01</span>
+            <div>
+              <strong>Design &amp; fabricate</strong>
+              <p>Mechanical assemblies, robot structures and prototypes.</p>
+            </div>
+          </div>
+
+          <div className="about-stat">
+            <span>02</span>
+            <div>
+              <strong>Simulate &amp; improve</strong>
+              <p>Numerical analysis, optimization and virtual testing.</p>
+            </div>
+          </div>
+
+          <div className="about-stat">
+            <span>03</span>
+            <div>
+              <strong>Connect disciplines</strong>
+              <p>Mechanical engineering, programming and robotics.</p>
+            </div>
+          </div>
+
+          <div className="education-card">
+            <span>EDUCATION / 2022—PRESENT</span>
+            <strong>B.E. Mechanical Engineering</strong>
+            <p>
+              Pulchowk Campus · Institute of Engineering<br />
+              Tribhuvan University, Nepal
+            </p>
+          </div>
+        </div>
+      </section>
+
 
       {/* Projects Section */}
       <section className="work-section section-pad" id="work">
         <div className="section-heading">
           <div>
-            <div className="eyebrow">SELECTED ENGINEERING PROJECTS</div>
+            <div className="eyebrow">ENGINEERING PROJECTS</div>
             <h2>
-              Work that moves<br />
-              <em>things forward.</em>
+              My<br />
+              <em>Projects</em>
             </h2>
           </div>
-          <p>From competition robots to mechanical design and simulation, a selection of projects shaped by making, testing and iteration.</p>
+          <p>Robotics, mechanical design, and automation projects built through hands-on engineering, prototyping, and experimentation.</p>
         </div>
 
         <div className="filter-row" role="group" aria-label="Filter projects">
@@ -350,57 +402,7 @@ export default function Home() {
         <p className="gallery-footnote">Replace these graphic placeholders with your own CAD renders, drawings, workshop photos or embedded 3D models.</p>
       </section>
 
-      {/* About Section */}
-      <section className="about-section section-pad" id="about">
-        <div className="about-left">
-          <div className="eyebrow">A LITTLE ABOUT ME</div>
-          <h2>
-            Curious by nature.<br />
-            <em>Engineer by practice.</em>
-          </h2>
-          <p>I’m an undergraduate mechanical engineering student at Pulchowk Campus, Institute of Engineering, Tribhuvan University. I enjoy working across the full engineering process—from sketching and CAD to fabrication, simulation and testing.</p>
-          <p>My work sits at the intersection of mechanical design, robotics and intelligent systems. I’m especially interested in how thoughtful design and accessible technology can solve practical problems.</p>
-          <a className="text-link" href="#contact">
-            More about my work <ArrowUpRight size={15} />
-          </a>
-        </div>
-
-        <div className="about-right">
-          <div className="about-stat">
-            <span>01</span>
-            <div>
-              <strong>Design &amp; fabricate</strong>
-              <p>Mechanical assemblies, robot structures and prototypes.</p>
-            </div>
-          </div>
-
-          <div className="about-stat">
-            <span>02</span>
-            <div>
-              <strong>Simulate &amp; improve</strong>
-              <p>Numerical analysis, optimization and virtual testing.</p>
-            </div>
-          </div>
-
-          <div className="about-stat">
-            <span>03</span>
-            <div>
-              <strong>Connect disciplines</strong>
-              <p>Mechanical engineering, programming and robotics.</p>
-            </div>
-          </div>
-
-          <div className="education-card">
-            <span>EDUCATION / 2022—PRESENT</span>
-            <strong>B.E. Mechanical Engineering</strong>
-            <p>
-              Pulchowk Campus · Institute of Engineering<br />
-              Tribhuvan University, Nepal
-            </p>
-          </div>
-        </div>
-      </section>
-
+     
       {/* Experience Section */}
       <section className="experience-section section-pad">
         <div className="eyebrow">EXPERIENCE &amp; MILESTONES</div>
@@ -570,7 +572,7 @@ export default function Home() {
                   <span key={t}>{t}</span>
                 ))}
               </div>
-              <p className="modal-hint">Add your project photos, CAD screenshots, drawings and verified results to make this case study more complete.</p>
+              {/* <p className="modal-hint">Add your project photos, CAD screenshots, drawings and verified results to make this case study more complete.</p> */}
             </div>
           </section>
         </div>
