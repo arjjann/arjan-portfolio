@@ -526,18 +526,9 @@ export default function Home() {
 
       {/* Contact Section */}
       <footer className="contact-section section-pad" id="contact">
-        <div className="contact-top">
-          <div>
-            <div className="eyebrow">HAVE A CHALLENGE TO SOLVE?</div>
-            <h2>
-              Let’s build something<br />
-              <em>meaningful.</em>
-            </h2>
-          </div>
-          <p>Open to engineering internships, research opportunities and robotics collaborations.</p>
-        </div>
+      
 
-        <div className="contact-bottom">
+      
           <a className="contact-email" href="mailto:arjanbista@gmail.com">
             Get in touch <ArrowUpRight size={18} />
           </a>
