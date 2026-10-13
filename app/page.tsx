@@ -245,7 +245,7 @@ export default function Home() {
 
       {/* About Section */}
       <section className="about-section section-pad" id="about">
-       
+        <div className="about-left">
           <h2>
             A Brief about Myself<br />
            
@@ -255,7 +255,7 @@ export default function Home() {
           <a className="text-link" href="#contact">
             More about my work <ArrowUpRight size={15} />
           </a>
-    
+        </div>
 
         <div className="about-right">
           <div className="about-stat">
