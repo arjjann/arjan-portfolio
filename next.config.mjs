@@ -3,19 +3,23 @@ const isGitHubPages = process.env.GITHUB_PAGES === 'true';
 const repositoryName = 'arjan-portfolio';
 
 const nextConfig = {
-  // Export a fully static site so GitHub Pages can serve it without a Node.js server.
+  // Generates static HTML/CSS/JS files for GitHub Pages
   output: 'export',
   trailingSlash: true,
-  // GitHub project pages live under /<repository-name>/ rather than the domain root.
-  ...(isGitHubPages
-    ? {
-        basePath: `/${repositoryName}`,
-      }
-    : {}),
-  // Required if Next.js Image Optimization is used with static export.
+
+  // Applies subpath routing only when building for GitHub Pages
+  basePath: isGitHubPages ? `/${repositoryName}` : '',
+  assetPrefix: isGitHubPages ? `/${repositoryName}/` : '',
+
+  // Disables server-side image optimization required for static exports
   images: {
     unoptimized: true,
-    remotePatterns: [{ protocol: 'https', hostname: 'images.unsplash.com' }],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+    ],
   },
 };
 
