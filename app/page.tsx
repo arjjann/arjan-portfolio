@@ -516,14 +516,9 @@ export default function Home() {
 
       {/* Resume Section */}
       <section className="resume-section section-pad" id="resume">
-        <div>
-          <div className="eyebrow">WANT THE FULL PICTURE?</div>
-          <h2>
-            Let the work<br />
-            <em>speak for itself.</em>
-          </h2>
-          <p>Explore the projects above or get in touch to discuss my experience, technical interests and availability.</p>
-        </div>
+       
+          
+        
         <a className="button button-dark" href="./Arjan-Bista-CV.pdf" target="_blank" rel="noreferrer">
           Download CV <Download size={16} />
         </a>
@@ -546,6 +541,10 @@ export default function Home() {
           <a className="contact-email" href="mailto:arjanbista@gmail.com">
             Get in touch <ArrowUpRight size={18} />
           </a>
+      
+           
+     
+       
           <div className="social-links">
             <a href="https://www.linkedin.com/in/arjan-bista/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
               <Linkedin size={17} /> LinkedIn <ExternalLink size={12} />
@@ -557,13 +556,11 @@ export default function Home() {
               <Mail size={17} /> Email <ExternalLink size={12} />
             </a>
           </div>
-        </div>
-
-        <div className="footer-legal">
-          <span>© {new Date().getFullYear()} ARJAN BISTA</span>
-          <span>DESIGNED WITH CURIOSITY · BUILT WITH INTENTION</span>
-          <a href="#top">BACK TO TOP ↑</a>
-        </div>
+       
+        
+      
+     
+  
       </footer>
 
       {/* Project Details Modal */}

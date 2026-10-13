@@ -1054,7 +1054,7 @@ h1 em,h2 em
 {
     position:relative;
     overflow:hidden;
-    background:#e4d8c5;
+   
     display:flex;
     justify-content:space-between;
     align-items:center;
