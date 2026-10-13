@@ -29,6 +29,7 @@ type Project = {
   summary: string;
   role: string;
   details: string[];
+  gallery?: { src: string; caption: string; description?: string; points?: string[] }[];
 };
 
 const projects: Project[] = [
