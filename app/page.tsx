@@ -38,7 +38,7 @@ const projects: Project[] = [
     title: 'ABU Robocon',
     category: 'Robotics',
     tags: ['Robotics', 'Mechanical Design', 'Fabrication'],
-    image: 'models/IMG_E6202.JPG',
+    image: '/models/IMG_E6202.JPG',
     alt: 'Robocon Team 2025',
     summary: 'Designed, fabricated and assembled competition robots as part of the Robotics Club, Pulchowk Campus team.',
     role: 'Robot design, fabrication, assembly and team coordination across the 2023, 2024 and 2025 seasons.',
@@ -47,23 +47,49 @@ const projects: Project[] = [
       'Worked  with fabrication, assembly and testing.',
       'Participated in ABU Robocon seasons in 2023, 2024 and 2025.'
     ],
-    gallery: ['/models/R1.png', '/models/robor2.o_bg.png']
-  },
-  {
-    id: 'clay-printer',
-    number: '02',
-    title: 'Clay 3D Printer',
-    category: 'Manufacturing',
-    tags: ['Manufacturing', 'Prototyping', 'Mechanisms'],
-    image: 'models/IMG_E9894.JPG',
-    alt: '3D printing machine',
-    summary: 'Adapted an FDM-style 3D printer for clay extrusion as part of the STEAM initiative in Nepal.',
-    role: 'Mechanical conversion, extrusion mechanism and prototype development.',
-    details: [
-      'Worked on a piston/screw-driven clay extrusion setup.',
-      'Integrated the extrusion mechanism with a motion platform.',
-      'Explored nozzle size, material flow and layer consistency.'
-    ]
+    gallery: [
+      {
+        src: '/models/R1.png',
+        caption: 'Fig. 1: Robot One (R1)',
+        description: 'This is Robot one R1.'
+      },
+      {
+        src: '/models/robor2.o_bg.png',
+        caption: 'Fig. 2: Robot Two (R2)',
+        description: 'This is Robot Two'
+      }
+      ]
+        },
+        {
+      id: 'clay-printer',
+      number: '02',
+      title: 'Clay 3D Printer',
+      category: 'Manufacturing',
+      tags: ['Manufacturing', 'Prototyping', 'Mechanisms'],
+      image: 'models/IMG_E9894.JPG',
+      alt: '3D printing machine',
+      summary: 'Adapted an FDM-style 3D printer for clay extrusion as part of the STEAM initiative in Nepal.',
+      role: 'Mechanical conversion, extrusion mechanism and prototype development.',
+      details: [
+        'Worked on a piston/screw-driven clay extrusion setup.',
+        'Integrated the extrusion mechanism with a motion platform.',
+        'Explored nozzle size, material flow and layer consistency.'
+      ],
+      gallery: [
+      {
+        src: '/models/IMG_E9898.JPG',
+        caption: 'Fig. 1:Nozzle layout',
+      },
+      {
+        src: '/models/clay_printer_pump.png',
+        caption: 'Fig. 2:Exploded View of pump',
+      },
+      {
+        src: '/models/section_view_pump.png',
+        caption: 'Fig. 3: Section View of the Pump Extrusion System in CAD',
+      }
+      ]
+
   },
   {
     id: 'roller',
@@ -103,7 +129,7 @@ const projects: Project[] = [
     title: 'Compliant Mechanism Topology Optimization',
     category: 'AI & Simulation',
     tags: ['MATLAB', 'FEA', 'Optimization'],
-    image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1200&q=85',
+    image: '/models/WhatsApp Image 2026-10-13 at 17.36.57.jpeg',
     alt: 'Engineering analysis and design work',
     summary: 'Final-year thesis work on SIMP topology optimization for a compliant double-displacement lever.',
     role: 'MATLAB implementation, sensitivity analysis and optimization workflow.',
@@ -116,33 +142,39 @@ const projects: Project[] = [
 ];
 
 const filters = ['All', 'Mechanical Design', 'Robotics', 'Manufacturing', 'AI & Simulation'];
-
 function ArmIllustration() {
+  const preventSave = (e: React.SyntheticEvent) => e.preventDefault();
+
   return (
     <div className="arm-stage" aria-label="Mechanical systems project showcase">
       {/* <div className="stage-label">MECHANICAL SYSTEMS / 01</div> */}
 
-      {/* Floating & Layered Media Container */}
       <div className="arm-visual-wrapper">
-        {/* Background collage image: blurred & semi-transparent */}
+        {/* Background collage image */}
         <img
           src="/models/cover3.png"
           alt="Engineering projects collage background"
           className="bg-cover-image"
           loading="eager"
+          draggable={false}
+          onContextMenu={preventSave}
+          onDragStart={preventSave}
         />
 
-        {/* Foreground floating robotic arm with no background */}
+        {/* Foreground floating robotic arm */}
         <img
           src="/models/arm.png"
           alt="Floating robotic arm cutout"
           className="floating-arm-image"
           loading="eager"
+          draggable={false}
+          onContextMenu={preventSave}
+          onDragStart={preventSave}
         />
       </div>
 
       <div className="arm-caption">
-        <span>Robotics  mechanical design &amp; fabrication</span>
+        <span>Robotics &amp; mechanical design</span>
         {/* <span>01 — 05</span> */}
       </div>
     </div>
@@ -525,13 +557,13 @@ export default function Home() {
             Get in touch <ArrowUpRight size={18} />
           </a>
           <div className="social-links">
-            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/arjan-bista/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
               <Linkedin size={17} /> LinkedIn <ExternalLink size={12} />
             </a>
-            <a href="https://github.com/" target="_blank" rel="noreferrer" aria-label="GitHub">
+            <a href="https://github.com/arjjann" target="_blank" rel="noreferrer" aria-label="GitHub">
               <Github size={17} /> GitHub <ExternalLink size={12} />
             </a>
-            <a href="mailto:arjan.bista@example.com">
+            <a href="mailto:arjanbista@gmail.com">
               <Mail size={17} /> Email <ExternalLink size={12} />
             </a>
           </div>
@@ -567,6 +599,17 @@ export default function Home() {
                   <li key={d}>{d}</li>
                 ))}
               </ul>
+              {selected.gallery && selected.gallery.length > 0 && (
+                <div className="modal-gallery">
+                  {selected.gallery.map((g) => (
+                   <figure key={g.src}>
+                  <img src={g.src} alt={g.caption} />
+                  <figcaption>{g.caption}</figcaption>
+                  {g.description && <p className="gallery-description">{g.description}</p>}
+                </figure>
+                  ))}
+                </div>
+              )}
               <div className="tag-row">
                 {selected.tags.map((t) => (
                   <span key={t}>{t}</span>

@@ -343,11 +343,11 @@ h1 em,h2 em
   max-width: 65%;
   max-height: 70%;
   object-fit: contain;
+  opacity: 1.0;
   
   /* Knock out the solid white background */
   mix-blend-mode: multiply;
-  
-  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.35));
+  filter: contrast(130%) brightness(110%) drop-shadow(0 15px 25px rgba(0, 0, 0, 0.35));
   animation: floatArm 4s ease-in-out infinite;
 }
 
@@ -1260,6 +1260,7 @@ h1 em,h2 em
     width:38px;
     height:38px;
     border:0;
+    border-radius:50%;
     background:var(--paper);
     display:grid;
     place-items:center;
@@ -1325,6 +1326,38 @@ h1 em,h2 em
     border-top:1px solid var(--line);
     font-size:10px!important;
     font-style:italic
+}
+.modal-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin: 24px 0;
+}
+.modal-gallery figure { 
+    margin: 0; 
+    text-align: center;
+}
+
+.modal-gallery img {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  display: block;
+  margin: 0 auto;
+}
+.modal-gallery figcaption {
+  margin-top: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-style: italic;
+  color: #6b6b6b;
+  text-align: center;
+}
+
+.gallery-description {
+  text-align: left;
 }
 
 @keyframes float
@@ -1624,17 +1657,28 @@ h1 em,h2 em
     }
     .project-modal
     {
-        display:block;
-        max-height:92vh
+         background:var(--paper);
+        width:min(760px,100%);
+        max-height:90vh;
+        overflow-y:auto;
+        position:relative;
+        display:block
     }
     .modal-image
     {
-        height:220px;
-        min-height:0
+        height:340px;
+        min-height:0;
+        background:#ddd;
+        position:relative
     }
     .modal-image img
     {
-        position:absolute
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        object-position:center 75%;
+        position:absolute;
+        inset:0
     }
     .modal-content
     {
@@ -1674,4 +1718,30 @@ h1 em,h2 em
   100% {
     transform: translateY(0px) rotate(0deg);
   }
+}
+
+.project-modal {
+  display: block !important;
+  grid-template-columns: 1fr !important;
+  width: min(760px, 100%) !important;
+}
+
+.modal-image {
+  position: relative !important;
+  height: 340px !important;
+  min-height: 0 !important;
+  width: 100% !important;
+}
+
+.modal-image img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 75% !important;
+}
+
+.modal-close {
+  border-radius: 50% !important;
 }
