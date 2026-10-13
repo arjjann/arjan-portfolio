@@ -18,6 +18,13 @@ import {
   X
 } from 'lucide-react';
 
+// Helper to ensure basePath is applied in production for HTML <img> tags
+const basePath = process.env.NODE_ENV === 'production' ? '/arjan-portfolio' : '';
+const getImagePath = (path: string) => {
+  const cleanPath = path.startsWith('/') ? path : `/${path}`;
+  return `${basePath}${cleanPath}`;
+};
+
 type Project = {
   id: string;
   number: string;
@@ -45,7 +52,7 @@ const projects: Project[] = [
     role: 'Robot design, fabrication, assembly and team coordination across the 2023, 2024 and 2025 seasons.',
     details: [
       'Contributed to iterative robot design and mechanical integration.',
-      'Worked  with fabrication, assembly and testing.',
+      'Worked with fabrication, assembly and testing.',
       'Participated in ABU Robocon seasons in 2023, 2024 and 2025.'
     ],
     gallery: [
@@ -59,49 +66,48 @@ const projects: Project[] = [
         caption: 'Fig. 2: Robot Two (R2)',
         description: 'This is Robot Two'
       }
-      ]
-        },
-        {
-      id: 'clay-printer',
-      number: '02',
-      title: 'Clay 3D Printer',
-      category: 'Manufacturing',
-      tags: ['Manufacturing', 'Prototyping', 'Mechanisms'],
-      image: 'models/IMG_E9894.JPG',
-      alt: '3D printing machine',
-      summary: 'Adapted an FDM-style 3D printer for clay extrusion as part of the STEAM initiative in Nepal.',
-      role: 'Mechanical conversion, extrusion mechanism and prototype development.',
-      details: [
-        'Worked on a piston/screw-driven clay extrusion setup.',
-        'Integrated the extrusion mechanism with a motion platform.',
-        'Explored nozzle size, material flow and layer consistency.'
-      ],
-      gallery: [
+    ]
+  },
+  {
+    id: 'clay-printer',
+    number: '02',
+    title: 'Clay 3D Printer',
+    category: 'Manufacturing',
+    tags: ['Manufacturing', 'Prototyping', 'Mechanisms'],
+    image: '/models/IMG_E9894.JPG', // Fixed leading slash
+    alt: '3D printing machine',
+    summary: 'Adapted an FDM-style 3D printer for clay extrusion as part of the STEAM initiative in Nepal.',
+    role: 'Mechanical conversion, extrusion mechanism and prototype development.',
+    details: [
+      'Worked on a piston/screw-driven clay extrusion setup.',
+      'Integrated the extrusion mechanism with a motion platform.',
+      'Explored nozzle size, material flow and layer consistency.'
+    ],
+    gallery: [
       {
         src: '/models/IMG_E9898.JPG',
-        caption: 'Fig. 1:Nozzle layout',
+        caption: 'Fig. 1: Nozzle layout',
       },
       {
         src: '/models/clay_printer_pump.png',
-        caption: 'Fig. 2:Exploded View of pump',
+        caption: 'Fig. 2: Exploded View of pump',
       },
       {
         src: '/models/section_view_pump.png',
         caption: 'Fig. 3: Section View of the Pump Extrusion System in CAD',
       }
-      ]
-
+    ]
   },
   {
     id: 'roller',
     number: '03',
     title: 'Zip Coaster Roller Assembly',
     category: 'Mechanical Design',
-    tags: ['CAD', 'Mechanical Design','Optimization'],
-    image: 'models/Roller_IV.png',
+    tags: ['CAD', 'Mechanical Design', 'Optimization'],
+    image: '/models/Roller_IV.png', // Fixed leading slash
     alt: 'Mechanical engineering workshop',
     summary: 'Designed a roller assembly for the roller pipe coaster at Nagarkot Zip Coaster.',
-    role: 'CAD design, assembly development ,manufacturing drawings and optimization',
+    role: 'CAD design, assembly development, manufacturing drawings and optimization',
     details: [
       'Developed parts and assemblies in CAD.',
       'Considered fit, manufacturability, compactness and assembly access.',
@@ -114,7 +120,7 @@ const projects: Project[] = [
     title: 'Robotic Arm Manipulation with RL',
     category: 'AI & Simulation',
     tags: ['Robotics', 'Simulation', 'Python'],
-    image: 'models/Rl robotic arm.png',
+    image: '/models/Rl robotic arm.png', // Fixed leading slash
     alt: 'Robotic arm in a laboratory',
     summary: 'Trained a simulated robotic arm to reach a target using Proximal Policy Optimization (PPO).',
     role: 'Simulation environment, reward design and reinforcement-learning experiments.',
@@ -143,17 +149,15 @@ const projects: Project[] = [
 ];
 
 const filters = ['All', 'Mechanical Design', 'Robotics', 'Manufacturing', 'AI & Simulation'];
+
 function ArmIllustration() {
   const preventSave = (e: React.SyntheticEvent) => e.preventDefault();
 
   return (
     <div className="arm-stage" aria-label="Mechanical systems project showcase">
-      {/* <div className="stage-label">MECHANICAL SYSTEMS / 01</div> */}
-
       <div className="arm-visual-wrapper">
-        {/* Background collage image */}
         <img
-          src="/models/cover3.png"
+          src={getImagePath('/models/cover3.png')}
           alt="Engineering projects collage background"
           className="bg-cover-image"
           loading="eager"
@@ -161,10 +165,8 @@ function ArmIllustration() {
           onContextMenu={preventSave}
           onDragStart={preventSave}
         />
-
-        {/* Foreground floating robotic arm */}
         <img
-          src="/models/arm.png"
+          src={getImagePath('/models/arm.png')}
           alt="Floating robotic arm cutout"
           className="floating-arm-image"
           loading="eager"
@@ -176,7 +178,6 @@ function ArmIllustration() {
 
       <div className="arm-caption">
         <span>Robotics &amp; mechanical design</span>
-        {/* <span>01 — 05</span> */}
       </div>
     </div>
   );
@@ -199,8 +200,7 @@ export default function Home() {
       {/* Navigation Header */}
       <header className="nav-wrap">
         <a className="brand" href="#top" aria-label="Arjan Bista home">
-          <span className="brand-mark"> <span></span>{/*AB.*/}
-          </span>
+          <span className="brand-mark"> <span></span></span>
           <span className="brand-name">
             ARJAN BISTA<small>MECHANICAL ENGINEERING STUDENT</small>
           </span>
@@ -211,15 +211,9 @@ export default function Home() {
         </button>
 
         <nav className={mobileOpen ? 'nav-links open' : 'nav-links'}>
-          <a href="#about" onClick={closeMenu}>
-            About
-          </a>
-          <a href="#work" onClick={closeMenu}>
-            Work
-          </a>
-          <a href="#skills" onClick={closeMenu}>
-            Skills
-          </a>
+          <a href="#about" onClick={closeMenu}>About</a>
+          <a href="#work" onClick={closeMenu}>Work</a>
+          <a href="#skills" onClick={closeMenu}>Skills</a>
           <a href="#resume" onClick={closeMenu}>
             Resume <ArrowUpRight size={13} />
           </a>
@@ -233,7 +227,7 @@ export default function Home() {
       <section className="hero section-pad" id="top">
         <div className="hero-copy">
           <div className="eyebrow">
-            <span className="eyebrow-line" /> MECHANICAL ENGINEERING · ROBOTICS { /* AUTOMATION} */}
+            <span className="eyebrow-line" /> MECHANICAL ENGINEERING · ROBOTICS
           </div>
           <h1>
             Arjan Bista<br />
@@ -250,13 +244,11 @@ export default function Home() {
               View resume <ArrowUpRight size={15} />
             </a>
           </div>
-          <div className="hero-footnote">
-            {/* <span className="status-dot" /> OPEN TO INTERNSHIPS, RESEARCH &amp; COLLABORATION */}
-          </div>
         </div>
         <ArmIllustration />
       </section>
-       {/* About Section */}
+
+      {/* About Section */}
       <section className="about-section section-pad" id="about">
         <div className="about-left">
           <div className="eyebrow">A LITTLE ABOUT ME</div>
@@ -307,7 +299,6 @@ export default function Home() {
         </div>
       </section>
 
-
       {/* Projects Section */}
       <section className="work-section section-pad" id="work">
         <div className="section-heading">
@@ -334,7 +325,7 @@ export default function Home() {
           {visibleProjects.map((p) => (
             <button key={p.id} className="project-card" onClick={() => setSelected(p)}>
               <div className={`project-image image-${p.id}`}>
-                <img src={p.image} alt={p.alt} loading="lazy" />
+                <img src={getImagePath(p.image)} alt={p.alt} loading="lazy" />
                 <span className="image-number">{p.number} / PROJECT</span>
                 <span className="card-arrow">
                   <ArrowUpRight size={19} />
@@ -435,7 +426,6 @@ export default function Home() {
         <p className="gallery-footnote">Replace these graphic placeholders with your own CAD renders, drawings, workshop photos or embedded 3D models.</p>
       </section>
 
-     
       {/* Experience Section */}
       <section className="experience-section section-pad">
         <div className="eyebrow">EXPERIENCE &amp; MILESTONES</div>
@@ -537,7 +527,6 @@ export default function Home() {
         <a className="button button-dark" href="./Arjan-Bista-CV.pdf" target="_blank" rel="noreferrer">
           Download CV <Download size={16} />
         </a>
-        <span className="resume-mark"></span> {/*AB>*/}
       </section>
 
       {/* Contact Section */}
@@ -554,7 +543,7 @@ export default function Home() {
         </div>
 
         <div className="contact-bottom">
-          <a className="contact-email" href="mailto:arjan.bista@example.com">
+          <a className="contact-email" href="mailto:arjanbista@gmail.com">
             Get in touch <ArrowUpRight size={18} />
           </a>
           <div className="social-links">
@@ -585,7 +574,7 @@ export default function Home() {
               <X size={20} />
             </button>
             <div className="modal-image">
-              <img src={selected.image} alt={selected.alt} />
+              <img src={getImagePath(selected.image)} alt={selected.alt} />
             </div>
             <div className="modal-content">
               <div className="eyebrow">
@@ -603,11 +592,11 @@ export default function Home() {
               {selected.gallery && selected.gallery.length > 0 && (
                 <div className="modal-gallery">
                   {selected.gallery.map((g) => (
-                   <figure key={g.src}>
-                  <img src={g.src} alt={g.caption} />
-                  <figcaption>{g.caption}</figcaption>
-                  {g.description && <p className="gallery-description">{g.description}</p>}
-                </figure>
+                    <figure key={g.src}>
+                      <img src={getImagePath(g.src)} alt={g.caption} />
+                      <figcaption>{g.caption}</figcaption>
+                      {g.description && <p className="gallery-description">{g.description}</p>}
+                    </figure>
                   ))}
                 </div>
               )}
@@ -616,7 +605,6 @@ export default function Home() {
                   <span key={t}>{t}</span>
                 ))}
               </div>
-              {/* <p className="modal-hint">Add your project photos, CAD screenshots, drawings and verified results to make this case study more complete.</p> */}
             </div>
           </section>
         </div>
@@ -628,4 +616,4 @@ export default function Home() {
       </a>
     </main>
   );
-} 
+}
