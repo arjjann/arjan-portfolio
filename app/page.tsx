@@ -297,7 +297,7 @@ export default function Home() {
       <section className="work-section section-pad" id="work">
         <div className="section-heading">
           <div>
-            <div className="eyebrow">ENGINEERING PROJECTS</div>
+         
             <h2>
               My<br />
               <em>Projects</em>
@@ -320,16 +320,14 @@ export default function Home() {
             <button key={p.id} className="project-card" onClick={() => setSelected(p)}>
               <div className={`project-image image-${p.id}`}>
                 <img src={getImagePath(p.image)} alt={p.alt} loading="lazy" />
-                <span className="image-number">{p.number} / PROJECT</span>
+               
                 <span className="card-arrow">
                   <ArrowUpRight size={19} />
                 </span>
               </div>
               <div className="project-meta">
                 <span>{p.category}</span>
-                <span>
-                  {p.number} — 0{projects.length}
-                </span>
+               
               </div>
               <div className="project-title-row">
                 <h3>{p.title}</h3>
@@ -465,12 +463,12 @@ export default function Home() {
       {/* Skills Section */}
       <section className="skills-section section-pad" id="skills">
         <div className="skills-intro">
-          <div className="eyebrow">TOOLS OF THE TRADE</div>
+          
           <h2>
             What I work<br />
             <em>with.</em>
           </h2>
-          <p>Tools are part of the process. The goal is to choose the right one to understand, design, build and improve a system.</p>
+        
         </div>
 
         <div className="skills-list">
