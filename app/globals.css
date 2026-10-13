@@ -150,7 +150,7 @@ button:focus-visible,a:focus-visible
     display:grid;
     grid-template-columns:1fr 1fr; /*1.02fr .98fr; */
     gap:64px;
-    padding-top:70px;
+    padding-top:50px;
     padding-bottom:88px;
     align-items:center;
     min-height:620px

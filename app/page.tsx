@@ -198,7 +198,9 @@ export default function Home() {
       <header className="nav-wrap">
         <a className="brand" href="#top" aria-label="Arjan Bista home">
           <span className="brand-mark"> <span></span></span>
-       
+          <span className="brand-name">
+            ARJAN BISTA
+          </span>
         </a>
 
         <button className="mobile-toggle" aria-label="Toggle navigation" onClick={() => setMobileOpen(!mobileOpen)}>
@@ -221,7 +223,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="hero section-pad" id="top">
         <div className="hero-copy">
-        
+       
           <h1>
             Arjan Bista<br />
             <em></em>
@@ -243,18 +245,17 @@ export default function Home() {
 
       {/* About Section */}
       <section className="about-section section-pad" id="about">
-        <div className="about-left">
-          <div className="eyebrow">A LITTLE ABOUT ME</div>
+       
           <h2>
-            Curious by nature.<br />
-            <em>Engineer by practice.</em>
+            A Brief about Myself<br />
+           
           </h2>
           <p>I’m an undergraduate mechanical engineering student at Pulchowk Campus, Institute of Engineering, Tribhuvan University. I enjoy working across the full engineering process—from sketching and CAD to fabrication, simulation and testing.</p>
           <p>My work sits at the intersection of mechanical design, robotics and intelligent systems. I’m especially interested in how thoughtful design and accessible technology can solve practical problems.</p>
           <a className="text-link" href="#contact">
             More about my work <ArrowUpRight size={15} />
           </a>
-        </div>
+    
 
         <div className="about-right">
           <div className="about-stat">
@@ -352,7 +353,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Gallery Section */}
+      {/* Gallery Section
       <section className="gallery-section section-pad">
         <div className="gallery-heading">
           <div>
@@ -417,7 +418,7 @@ export default function Home() {
         </div>
 
         <p className="gallery-footnote">Replace these graphic placeholders with your own CAD renders, drawings, workshop photos or embedded 3D models.</p>
-      </section>
+      </section> */}
 
       {/* Experience Section */}
       <section className="experience-section section-pad">
