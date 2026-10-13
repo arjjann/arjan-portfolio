@@ -118,48 +118,28 @@ const filters = ['All', 'Mechanical Design', 'Robotics', 'Manufacturing', 'AI & 
 
 function ArmIllustration() {
   return (
-    <div className="arm-stage" aria-label="Stylized mechanical robotic arm illustration">
+    <div className="arm-stage" aria-label="Mechanical systems project showcase">
       <div className="stage-label">MECHANICAL SYSTEMS / 01</div>
-      <svg className="arm-svg" viewBox="0 0 620 440" role="img" aria-label="Illustration of a multi-joint robotic arm">
-        <defs>
-          <linearGradient id="metal" x1="0" x2="1" y1="0" y2="1">
-            <stop offset="0" stopColor="#e6b36b" />
-            <stop offset=".5" stopColor="#b97837" />
-            <stop offset="1" stopColor="#80502b" />
-          </linearGradient>
-          <linearGradient id="darkmetal" x1="0" x2="1">
-            <stop offset="0" stopColor="#394047" />
-            <stop offset="1" stopColor="#171c21" />
-          </linearGradient>
-        </defs>
-        <ellipse cx="310" cy="390" rx="168" ry="24" fill="#b8b4a8" opacity=".45" />
-        <path d="M232 365 L242 305 L378 305 L391 365 Z" fill="url(#darkmetal)" />
-        <ellipse cx="310" cy="305" rx="69" ry="22" fill="#313840" />
-        <ellipse cx="310" cy="302" rx="43" ry="13" fill="url(#metal)" />
-        <path d="M276 300 L240 226 L286 200 L330 267 Z" fill="url(#darkmetal)" stroke="#11171c" strokeWidth="3" />
-        <path d="M247 223 L281 203 L361 118 L326 95 L256 160 Z" fill="url(#metal)" stroke="#6c472b" strokeWidth="3" />
-        <path d="M326 96 L362 116 L438 102 L431 70 L351 73 Z" fill="url(#darkmetal)" />
-        <path d="M419 67 L448 62 L464 78 L457 110 L436 114 L426 97 Z" fill="url(#metal)" />
-        <circle cx="264" cy="205" r="39" fill="#272d33" stroke="#bd8a51" strokeWidth="10" />
-        <circle cx="264" cy="205" r="17" fill="url(#metal)" />
-        <circle cx="264" cy="205" r="6" fill="#30363b" />
-        <circle cx="349" cy="99" r="24" fill="#242a30" stroke="#c18b4f" strokeWidth="7" />
-        <circle cx="349" cy="99" r="8" fill="#e4b36f" />
-        <path d="M452 78 L493 68 L514 81 L511 104 L470 112 L456 101 Z" fill="url(#darkmetal)" />
-        <path d="M507 80 L540 77 L553 88 L548 103 L514 107 Z" fill="#e8e8e3" stroke="#5e6368" strokeWidth="4" />
-        <path d="M542 87 L574 73 L583 79 L558 100 Z" fill="#30363b" />
-        <path d="M541 96 L572 115 L579 110 L557 92 Z" fill="#30363b" />
-        <g fill="#22282e">
-          <circle cx="246" cy="180" r="4" />
-          <circle cx="280" cy="228" r="4" />
-          <circle cx="333" cy="85" r="3" />
-          <circle cx="364" cy="113" r="3" />
-          <circle cx="446" cy="77" r="3" />
-          <circle cx="450" cy="100" r="3" />
-        </g>
-        <path d="M160 355 H460" stroke="#8e8b81" strokeWidth="1" strokeDasharray="4 7" />
-        <text x="36" y="48" fill="#8a6a47" fontSize="12" letterSpacing="3">DESIGN / BUILD / TEST</text>
-      </svg>
+
+      {/* Floating & Layered Media Container */}
+      <div className="arm-visual-wrapper">
+        {/* Background collage image: blurred & semi-transparent */}
+        <img
+          src="/models/cover3.png"
+          alt="Engineering projects collage background"
+          className="bg-cover-image"
+          loading="eager"
+        />
+
+        {/* Foreground floating robotic arm with no background */}
+        <img
+          src="/models/arm.png"
+          alt="Floating robotic arm cutout"
+          className="floating-arm-image"
+          loading="eager"
+        />
+      </div>
+
       <div className="arm-caption">
         <span>Robotics &amp; mechanical design</span>
         <span>01 — 05</span>
