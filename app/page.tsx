@@ -150,6 +150,55 @@ const projects: Project[] = [
 
 const filters = ['All', 'Mechanical Design', 'Robotics', 'Manufacturing', 'AI & Simulation'];
 
+type Entry = {
+  period: string;
+  title: string;
+  org: string;
+  points: string[];
+};
+
+const education: Entry[] = [
+  {
+    period: '2022 — Present',
+    title: 'B.E. Mechanical Engineering',
+    org: 'Pulchowk Campus, Institute of Engineering, Tribhuvan University',
+    points: [
+      'Undergraduate program focused on mechanical design, manufacturing and simulation.',
+      'Final-year thesis on SIMP topology optimization of a compliant mechanism.'
+    ]
+  }
+  // To add more, copy the block above, add a comma after the previous "}", and edit it.
+  // Example: your school / +2 college.
+];
+
+const experience: Entry[] = [
+  {
+    period: '2023 — 2025',
+    title: 'Mechanical Team Member, ABU Robocon',
+    org: 'Robotics Club, Pulchowk Campus',
+    points: [
+      'Contributed to robot design, fabrication, assembly and testing across three competition seasons.'
+    ]
+  },
+  {
+    period: 'Project',
+    title: 'Clay 3D Printer Development',
+    org: 'STEAM Initiative, MoEST Nepal',
+    points: [
+      'Adapted a 3D printer platform for clay-based extrusion and prototyping.'
+    ]
+  },
+  {
+    period: 'Project',
+    title: 'Mechanical CAD Designer',
+    org: 'Nagarkot Zip Coaster',
+    points: [
+      'Designed a roller assembly and prepared manufacturing-focused CAD documentation.'
+    ]
+  }
+];
+
+
 function ArmIllustration() {
   const preventSave = (e: React.SyntheticEvent) => e.preventDefault();
 
@@ -166,7 +215,7 @@ function ArmIllustration() {
           onDragStart={preventSave}
         />
         <img
-          src={getImagePath('/models/arm.png')}
+          src={getImagePath('/models/arm_NB.png')}
           alt="Floating robotic arm cutout"
           className="floating-arm-image"
           loading="eager"
@@ -182,6 +231,8 @@ function ArmIllustration() {
 
 export default function Home() {
   const [activeFilter, setActiveFilter] = useState('All');
+  const [activeTab, setActiveTab] = useState<'education' | 'experience'>('education');
+  const entries = activeTab === 'education' ? education : experience;
   const [selected, setSelected] = useState<Project | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -209,8 +260,9 @@ export default function Home() {
 
         <nav className={mobileOpen ? 'nav-links open' : 'nav-links'}>
           <a href="#about" onClick={closeMenu}>About</a>
-          <a href="#work" onClick={closeMenu}>Work</a>
           <a href="#skills" onClick={closeMenu}>Skills</a>
+          <a href="#background" onClick={closeMenu}>Background</a>
+          <a href="#work" onClick={closeMenu}>Work</a>
           <a href="#resume" onClick={closeMenu}>
             Resume <ArrowUpRight size={13} />
           </a>
@@ -246,10 +298,11 @@ export default function Home() {
       {/* About Section */}
       <section className="about-section section-pad" id="about">
         <div className="about-left">
-          <h2>
-            A Brief about Myself<br />
-           
-          </h2>
+          <div>
+            <h2>A Brief <br />
+              <em>About Myself</em>
+            </h2>
+          </div>
           <p>I’m an undergraduate mechanical engineering student at Pulchowk Campus, Institute of Engineering, Tribhuvan University. I enjoy working across the full engineering process—from sketching and CAD to fabrication, simulation and testing.</p>
           <p>My work sits at the intersection of mechanical design, robotics and intelligent systems. I’m especially interested in how thoughtful design and accessible technology can solve practical problems.</p>
           <a className="text-link" href="#contact">
@@ -282,16 +335,109 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="education-card">
+          {/* <div className="education-card">
             <span>EDUCATION / 2022—PRESENT</span>
             <strong>B.E. Mechanical Engineering</strong>
             <p>
               Pulchowk Campus · Institute of Engineering<br />
               Tribhuvan University, Nepal
             </p>
+          </div> */}
+        </div>
+      </section>
+
+      {/* Skills Section */}
+      <section className="skills-section section-pad" id="skills">
+        <div className="skills-intro">
+          
+          <h2>
+            What I work<br />
+            <em>with.</em>
+          </h2>
+        
+        </div>
+
+        <div className="skills-list">
+          <div className="skill-group">
+            <span>01</span>
+            <div>
+              <h3>Mechanical design</h3>
+              <p>SolidWorks · CAD assemblies · Engineering drawings · Design for manufacturing</p>
+            </div>
+          </div>
+
+          <div className="skill-group">
+            <span>02</span>
+            <div>
+              <h3>Simulation &amp; analysis</h3>
+              <p>ANSYS · MATLAB · PyBullet · Finite element analysis · Topology optimization</p>
+            </div>
+          </div>
+
+          <div className="skill-group">
+            <span>03</span>
+            <div>
+              <h3>Robotics &amp; control</h3>
+              <p>ROS 2 · Gazebo · Reinforcement learning · Arduino · Sensors &amp; actuators</p>
+            </div>
+          </div>
+
+          <div className="skill-group">
+            <span>04</span>
+            <div>
+              <h3>Programming &amp; making</h3>
+              <p>Python · C/C++ · Git · 3D printing · Workshop fabrication</p>
+            </div>
           </div>
         </div>
       </section>
+
+            {/* Education & Experience Section */}
+      <section className="background-section section-pad" id="background">
+        <div className="background-head">
+          <h2>
+            My<br />
+            <em>Background</em>
+          </h2>
+
+          <div className="bg-tabs" role="tablist" aria-label="Education and experience">
+            <button
+              role="tab"
+              aria-selected={activeTab === 'education'}
+              className={activeTab === 'education' ? 'bg-tab active' : 'bg-tab'}
+              onClick={() => setActiveTab('education')}
+            >
+              Education
+            </button>
+            <button
+              role="tab"
+              aria-selected={activeTab === 'experience'}
+              className={activeTab === 'experience' ? 'bg-tab active' : 'bg-tab'}
+              onClick={() => setActiveTab('experience')}
+            >
+              Experience
+            </button>
+          </div>
+        </div>
+
+        <div className="bg-list" role="tabpanel" key={activeTab}>
+          {entries.map((e) => (
+            <div className="bg-item" key={e.title}>
+              <span className="bg-period">{e.period}</span>
+              <div>
+                <h3>{e.title}</h3>
+                <span className="bg-org">{e.org}</span>
+                <ul>
+                  {e.points.map((pt) => (
+                    <li key={pt}>{pt}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+      
 
       {/* Projects Section */}
       <section className="work-section section-pad" id="work">
@@ -342,7 +488,7 @@ export default function Home() {
             </button>
           ))}
         </div>
-
+        
         <div className="project-note">
           <span>HAVE A PROJECT IN MIND?</span>
           <a href="#contact">
@@ -419,7 +565,7 @@ export default function Home() {
       </section> */}
 
       {/* Experience Section */}
-      <section className="experience-section section-pad">
+      {/* <section className="experience-section section-pad">
         <div className="eyebrow">EXPERIENCE &amp; MILESTONES</div>
         <div className="timeline">
           <div className="timeline-item">
@@ -458,53 +604,7 @@ export default function Home() {
             <span className="timeline-type">SIMULATION</span>
           </div>
         </div>
-      </section>
-
-      {/* Skills Section */}
-      <section className="skills-section section-pad" id="skills">
-        <div className="skills-intro">
-          
-          <h2>
-            What I work<br />
-            <em>with.</em>
-          </h2>
-        
-        </div>
-
-        <div className="skills-list">
-          <div className="skill-group">
-            <span>01</span>
-            <div>
-              <h3>Mechanical design</h3>
-              <p>SolidWorks · CAD assemblies · Engineering drawings · Design for manufacturing</p>
-            </div>
-          </div>
-
-          <div className="skill-group">
-            <span>02</span>
-            <div>
-              <h3>Simulation &amp; analysis</h3>
-              <p>ANSYS · MATLAB · PyBullet · Finite element analysis · Topology optimization</p>
-            </div>
-          </div>
-
-          <div className="skill-group">
-            <span>03</span>
-            <div>
-              <h3>Robotics &amp; control</h3>
-              <p>ROS 2 · Gazebo · Reinforcement learning · Arduino · Sensors &amp; actuators</p>
-            </div>
-          </div>
-
-          <div className="skill-group">
-            <span>04</span>
-            <div>
-              <h3>Programming &amp; making</h3>
-              <p>Python · C/C++ · Git · 3D printing · CNC · Workshop fabrication</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      </section> */}
 
       {/* Resume Section */}
       <section className="resume-section section-pad" id="resume">
