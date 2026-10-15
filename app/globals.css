@@ -1915,3 +1915,39 @@ h1 em,h2 em
 .modal-close {
   border-radius: 50% !important;
 }
+
+
+/* For respinsive notables */
+@media (max-width: 650px) {
+  .notable-item {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "figure"
+      "text";
+    row-gap: 12px;
+  }
+
+  .notable-item figure {
+    margin: 0 auto;
+    max-width: 280px;
+  }
+
+  .notable-item figure img {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .notable-description {
+    font-size: 14px;
+  }
+      .project-modal
+    {
+        background:#ffffff;
+        width:min(760px,100%);
+        max-height:90vh;
+        overflow-y:auto;
+        position:relative;
+        display:block
+    }
+}
