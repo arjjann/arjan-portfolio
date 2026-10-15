@@ -521,6 +521,7 @@ h1 em,h2 em
     transition:.2s
 }
 
+
 .project-card:hover .card-arrow
 {
     transform:translateY(0);
@@ -1003,11 +1004,11 @@ h1 em,h2 em
 .skills-section
 {
     display:grid;
-    grid-template-columns:.8fr 1.2fr;
-    gap:10vw;
+    grid-template-columns:1fr;
+    gap:40px;
     padding-top:100px;
     padding-bottom:100px;
-    border-top: 1px solid var(--line);
+    border-top: 1px solid var(--line)
 }
 
 .skills-intro h2
@@ -1025,7 +1026,9 @@ h1 em,h2 em
 
 .skills-list
 {
-    border-top:1px solid var(--line)
+    border-top:1px solid var(--line);
+    width:100%;
+    max-width:900px
 }
 
 .skill-group
@@ -1340,7 +1343,8 @@ h1 em,h2 em
     overflow-y:auto;
     position:relative;
     display:grid;
-    grid-template-columns:.9fr 1.1fr
+    grid-template-columns:.9fr 1.1fr;
+    background: #ffffff;
 }
 
 .modal-close
@@ -1386,7 +1390,7 @@ h1 em,h2 em
 
 .modal-content h2
 {
-    font:600 32px/1.1 Manrope,sans-serif;
+    font:600 36px/1.1 Manrope,sans-serif;
     letter-spacing:-.05em;
     margin:14px 0
 }
@@ -1400,7 +1404,7 @@ h1 em,h2 em
 
 .modal-content h3
 {
-    font:600 14px Manrope,sans-serif;
+    font:600 24px Manrope,sans-serif;
     margin:22px 0 8px
 }
 
@@ -1450,6 +1454,64 @@ h1 em,h2 em
 
 .gallery-description {
   text-align: left;
+}
+
+.notable { 
+    margin-top: 28px; 
+}
+
+.notable-item {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  grid-template-areas:
+    "title title"
+    "figure text";
+  column-gap: 24px;
+  row-gap: 12px;
+  align-items: start;
+  margin-bottom: 32px;
+}
+
+.notable-item h4 {
+  grid-area: title;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: left;
+}
+
+.notable-item figure { 
+    margin: 0 0 14px; 
+    text-align: center;
+    grid-area: figure; 
+    margin: 0; 
+    text-align: center; 
+}
+
+.notable-item figure img 
+{ 
+    max-width: 100%; 
+    width: 100%; 
+    height: auto;
+}
+
+.notable-item figcaption { 
+    font-size: 13px;
+    font-style: italic; 
+    color: #666; 
+    margin-top: 6px; 
+}
+.notable-intro { 
+    margin: 0 0 20px; 
+}
+
+.notable-description { 
+    grid-area: text; 
+    margin: 0;
+    /* padding-top: 28px; */
+    font-size: 15px; 
+    line-height: 1.7; 
+    color: #555; 
 }
 
 @keyframes float

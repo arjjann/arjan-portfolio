@@ -25,6 +25,13 @@ const getImagePath = (path: string) => {
   return `${basePath}${cleanPath}`;
 };
 
+type NotableItem = {
+  title: string;
+  image: string;
+  caption: string;
+  description: string;
+};
+
 type Project = {
   id: string;
   number: string;
@@ -37,6 +44,7 @@ type Project = {
   role: string;
   details: string[];
   gallery?: { src: string; caption: string; description?: string; points?: string[] }[];
+  notable?: { intro: string; items: NotableItem[] };
 };
 
 const projects: Project[] = [
@@ -46,27 +54,36 @@ const projects: Project[] = [
     title: 'ABU Robocon',
     category: 'Robotics',
     tags: ['Robotics', 'Mechanical Design', 'Fabrication'],
-    image: '/models/IMG_E6202.JPG',
+    image: '/models/robot_01_02jpeg',
     alt: 'Robocon Team 2025',
-    summary: 'Designed, fabricated and assembled competition robots as part of the Robotics Club, Pulchowk Campus team.',
+    summary: 'Designed, fabricated, and assembled two robotic systems for Team Nepal at the ABU Robocon 2025 International Robotics Competition in Mongolia. Contributed to mechanical design, CAD development, manufacturing, and subsystem integration while coordinating team efforts throughout the robot development process. Collaborated with team members to refine designs, troubleshoot mechanical challenges, and ensure reliable robot performance through iterative testing and improvements. ',
     role: 'Robot design, fabrication, assembly and team coordination across the 2023, 2024 and 2025 seasons.',
     details: [
-      'Contributed to iterative robot design and mechanical integration.',
-      'Worked with fabrication, assembly and testing.',
-      'Participated in ABU Robocon seasons in 2023, 2024 and 2025.'
+      'Developed mechanical concepts, detailed CAD models, and design improvements to meet competition requirements.',
+      'Participated in component manufacturing, hands-on robot assembly, and mechanical subsystem integration.',
+      'Worked with teammates to troubleshoot mechanical issues, evaluate performance, and refine designs through iterative testing.',
+      'Coordinated design, fabrication, and assembly activities, collaborating across teams to ensure efficient development and timely completion.'
     ],
-    gallery: [
-      {
-        src: '/models/R1.png',
-        caption: 'Fig. 1: Robot One (R1)',
-        description: 'This is Robot one R1.'
-      },
-      {
-        src: '/models/robor2.o_bg.png',
-        caption: 'Fig. 2: Robot Two (R2)',
-        description: 'This is Robot Two'
-      }
-    ]
+    notable: {
+      intro: 'Notable works in 2025 are as follows:',
+      items: [
+        {
+          title: 'Robot 1',
+          image: '/models/R1_o .png',
+          caption: 'Fig. 1: Robot One (R1)',
+          description:
+            'Robot 1 featured separate dribbling and ball-shooting mechanisms, with independent yaw and pitch adjustments for directional and elevation control during shooting. The shooting mechanism used a double-belt system with natural-rubber-moulded V-belts to propel the ball toward the target. The dribbling mechanism incorporated two silicone rollers for ball control and dribbling, along with a gripping sub-mechanism to capture and retain the ball. The integration of these subsystems enabled the robot to handle the ball and perform controlled shots with adjustable direction and launch angle.'
+        },
+        {
+          title: 'Robot 2',
+          image: '/models/robor2.o_base_2.o.PNG',
+          caption: 'Fig. 2: Robot Two (R2)',
+          description:
+            'Robot 2 featured a spring-based energy-storage shooting mechanism designed to store mechanical energy before the round began and release it when triggered by the controller. Its ball-catching structure collected incoming balls and transferred them into a dedicated ball holder for shooting. Upon receiving a shooting command, the mechanism released the stored energy to propel the ball toward the target. The shooting configuration could also be adjusted according to the distance between the robot and the target, allowing the robot to adapt its shooting performance to different ranges. This design integrated ball collection, storage, controlled energy release, and distance-based shooting adjustments into a coordinated robotic system.'
+        }
+      ]
+    }
+    
   },
   {
     id: 'clay-printer',
@@ -76,37 +93,46 @@ const projects: Project[] = [
     tags: ['Manufacturing', 'Prototyping', 'Mechanisms'],
     image: '/models/IMG_E9894.JPG', // Fixed leading slash
     alt: '3D printing machine',
-    summary: 'Adapted an FDM-style 3D printer for clay extrusion as part of the STEAM initiative in Nepal.',
+    summary: 'Engineered and successfully converted a conventional Fused Deposition Modeling (FDM) 3D printer into a functional clay 3D printer for the STEAM Project 2026. Focused on nozzle design, pumping mechanisms, power transmission, printer control, and clay material behavior. Led advanced CAD modeling, fabrication, assembly, and iterative testing while implementing design improvements and coordinating team efforts to ensure reliable system performance and timely project completion.',
     role: 'Mechanical conversion, extrusion mechanism and prototype development.',
     details: [
       'Worked on a piston/screw-driven clay extrusion setup.',
       'Integrated the extrusion mechanism with a motion platform.',
       'Explored nozzle size, material flow and layer consistency.'
     ],
-    gallery: [
-      {
-        src: '/models/IMG_E9898.JPG',
-        caption: 'Fig. 1: Nozzle layout',
-      },
-      {
-        src: '/models/clay_printer_pump.png',
-        caption: 'Fig. 2: Exploded View of pump',
-      },
-      {
-        src: '/models/section_view_pump.png',
-        caption: 'Fig. 3: Section View of the Pump Extrusion System in CAD',
-      }
-    ]
+    notable: {
+      intro: 'Key components of the printer are as follows:',
+      items: [
+        {
+          title: 'Nozzle',
+          image: '/models/nozzle.JPG',
+          caption: 'Fig. 1: Nozzle layout',
+          description: ' The conventional filament extrusion and heating systems of an FDM (Fused Deposition Modeling) 3D printer were removed and replaced with a 3D printed converging nozzle connected to an external pneumatic line through a pneumatic connector. The nozzle was tested with different outlet diameters ranging from 3 mm to 5 mm, with the 4 mm nozzle delivering the best printing results among the tested configurations.'
+        },
+        {
+          title: 'Pump extrusion system',
+          image: '/models/section_view_pump.png',
+          caption: 'Fig. 2: Section view of the pump in CAD',
+          description: 'A piston-based clay extrusion pump was designed to deliver clay through a lead-screw-driven mechanism. An external wiper motor powered the pump, with a 3:1 gear reduction to provide the required mechanical advantage for piston actuation. This system enabled controlled clay extrusion for the modified 3D printer.'
+        },
+        {
+          title: 'Pump extrusion system',
+          image: 'models/controller.JPG',
+          caption: 'Fig. 2: Section view of the pump in CAD',
+          description: 'An Makerbase MKS Gen_L V1.0 controller and a Cytron motor driver MDD20A were integrated to control the wiper motor. Minor firmware modifications were implemented to accommodate the modified extrusion system. Marlin firmware was used for printer control, PrusaSlicer generated the G-code, and Repetier-Host was used to send the generated toolpaths to the controller for printing.'
+        }
+      ]
+    }
   },
   {
     id: 'roller',
     number: '03',
     title: 'Zip Coaster Roller Assembly',
     category: 'Mechanical Design',
-    tags: ['CAD', 'Mechanical Design', 'Optimization'],
+    tags: ['CAD', 'Mechanical Design'],
     image: '/models/Roller_IV.png', // Fixed leading slash
     alt: 'Mechanical engineering workshop',
-    summary: 'Designed a roller assembly for the roller pipe coaster at Nagarkot Zip Coaster.',
+    summary: 'Designed and developed a roller assembly for the Nagarkot Zip Coaster, focusing on mechanical design, component integration, and functional reliability. Created detailed CAD models, assemblies, and manufacturing drawings to support fabrication. Refined the design to ensure compatibility with the zip coaster system, manufacturability, structural functionality, and ease of assembly.',
     role: 'CAD design, assembly development, manufacturing drawings and optimization',
     details: [
       'Developed parts and assemblies in CAD.',
@@ -120,9 +146,9 @@ const projects: Project[] = [
     title: 'Robotic Arm Manipulation with RL',
     category: 'AI & Simulation',
     tags: ['Robotics', 'Simulation', 'Python'],
-    image: '/models/Rl robotic arm.png', // Fixed leading slash
+    image: '/models/gripper.png', // Fixed leading slash
     alt: 'Robotic arm in a laboratory',
-    summary: 'Trained a simulated robotic arm to reach a target using Proximal Policy Optimization (PPO).',
+    summary: 'Designed and developed a robotic arm in SolidWorks, converting the CAD model into a Unified Robot Description Format (URDF) for simulation. Implemented the robot model in PyBullet and developed a reinforcement learning (RL) framework using Proximal Policy Optimization (PPO) for robotic manipulation. Configured the simulation environment, trained the robot to reach target positions, and evaluated its manipulation performance through iterative training and testing.',
     role: 'Simulation environment, reward design and reinforcement-learning experiments.',
     details: [
       'Created a robot description from CAD and simulated it in PyBullet.',
@@ -136,7 +162,7 @@ const projects: Project[] = [
     title: 'Compliant Mechanism Topology Optimization',
     category: 'AI & Simulation',
     tags: ['MATLAB', 'FEA', 'Optimization'],
-    image: '/models/WhatsApp Image 2026-10-13 at 17.36.57.jpeg',
+    image: '/models/complient_lever.jpeg',
     alt: 'Engineering analysis and design work',
     summary: 'Final-year thesis work on SIMP topology optimization for a compliant double-displacement lever.',
     role: 'MATLAB implementation, sensitivity analysis and optimization workflow.',
@@ -346,47 +372,77 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Skills Section */}
+            {/* Skills Section */}
       <section className="skills-section section-pad" id="skills">
         <div className="skills-intro">
-          
           <h2>
-            What I work<br />
-            <em>with.</em>
+            My<br />
+            <em>Skills</em>
           </h2>
-        
         </div>
 
         <div className="skills-list">
           <div className="skill-group">
             <span>01</span>
             <div>
-              <h3>Mechanical design</h3>
-              <p>SolidWorks · CAD assemblies · Engineering drawings · Design for manufacturing</p>
+              <h3>Programming languages</h3>
+              <p>Python · C/C++</p>
             </div>
           </div>
 
           <div className="skill-group">
             <span>02</span>
             <div>
-              <h3>Simulation &amp; analysis</h3>
-              <p>ANSYS · MATLAB · PyBullet · Finite element analysis · Topology optimization</p>
+              <h3>CAD tools</h3>
+              <p>SolidWorks · AutoCAD</p>
             </div>
           </div>
 
           <div className="skill-group">
             <span>03</span>
             <div>
-              <h3>Robotics &amp; control</h3>
-              <p>ROS 2 · Gazebo · Reinforcement learning · Arduino · Sensors &amp; actuators</p>
+              <h3>Simulation tools &amp; robotics</h3>
+              <p>ANSYS · MATLAB · Gazebo · PyBullet · ROS 2 · SLAM</p>
             </div>
           </div>
 
           <div className="skill-group">
             <span>04</span>
             <div>
-              <h3>Programming &amp; making</h3>
-              <p>Python · C/C++ · Git · 3D printing · Workshop fabrication</p>
+              <h3>Artificial intelligence &amp; machine learning</h3>
+              <p>Large language models (LLMs) · Reinforcement learning (RL)</p>
+            </div>
+          </div>
+
+          <div className="skill-group">
+            <span>05</span>
+            <div>
+              <h3>Hardware &amp; electronics</h3>
+              <p>Arduino · Motor drivers · Raspberry Pi · RFID · Distance / proximity sensors · Servo, DC, stepper &amp; BLDC motors · Color sensors</p>
+            </div>
+          </div>
+
+          {/* <div className="skill-group">
+            <span>06</span>
+            <div>
+              <h3>Development tools</h3>
+              <p>Git · GitHub · VS Code</p>
+            </div>
+          </div> */}
+
+          <div className="skill-group">
+            <span>07</span>
+            <div>
+              <h3>Manufacturing &amp; fabrication</h3>
+              <p>Milling · Lathe · Welding · 3D printing · Grinding · CNC laser cutting</p>
+            </div>
+          </div>
+
+          <div className="skill-group">
+            <span>08</span>
+            <div>
+              <h3>Engineering &amp; system development</h3>
+              <p>Mechanical design · Robot design · CAD modeling · Fabrication · Assembly · Testing · System integration</p>
             </div>
           </div>
         </div>
@@ -466,7 +522,6 @@ export default function Home() {
             <button key={p.id} className="project-card" onClick={() => setSelected(p)}>
               <div className={`project-image image-${p.id}`}>
                 <img src={getImagePath(p.image)} alt={p.alt} loading="lazy" />
-               
                 <span className="card-arrow">
                   <ArrowUpRight size={19} />
                 </span>
@@ -611,7 +666,7 @@ export default function Home() {
        
           
         
-        <a className="button button-dark" href="./Arjan-Bista-CV.pdf" target="_blank" rel="noreferrer">
+        <a className="button button-dark" href="/models/Arjan_Bista_CV.pdf" target="_blank" rel="noreferrer">
           Download CV <Download size={16} />
         </a>
       </section>
@@ -662,13 +717,34 @@ export default function Home() {
               </div>
               <h2 id="modal-title">{selected.title}</h2>
               <p>{selected.summary}</p>
-              <h3>My contribution</h3>
+                <div className="tag-row">
+                  {selected.tags.map((t) => (
+                    <span key={t}>{t}</span>
+                  ))}
+                </div>
+              <h3>Role & Collaboration</h3>
               <p>{selected.role}</p>
               <ul>
                 {selected.details.map((d) => (
                   <li key={d}>{d}</li>
                 ))}
               </ul>
+              {selected.notable && (
+                <div className="notable">
+                  <h3>Notable Works</h3>
+                  <p className="notable-intro">{selected.notable.intro}</p>
+                  {selected.notable.items.map((item) => (
+                    <article className="notable-item" key={item.title}>
+                      <h4>{item.title}</h4>
+                      <figure>
+                        <img src={getImagePath(item.image)} alt={item.caption} />
+                        <figcaption>{item.caption}</figcaption>
+                      </figure>
+                      <p className="notable-description">{item.description}</p>
+                    </article>
+                  ))}
+                </div>
+              )}
               {selected.gallery && selected.gallery.length > 0 && (
                 <div className="modal-gallery">
                   {selected.gallery.map((g) => (
@@ -680,18 +756,13 @@ export default function Home() {
                   ))}
                 </div>
               )}
-              <div className="tag-row">
-                {selected.tags.map((t) => (
-                  <span key={t}>{t}</span>
-                ))}
-              </div>
             </div>
           </section>
         </div>
       )}
 
       {/* Floating Contact Button */}
-      <a className="floating-contact" href="#contact" aria-label="Contact Arjan">
+      <a className="floating-contact" href="mailto:arjanbista@gmail.com" aria-label="Contact Arjan">
         <Mail size={18} />
       </a>
     </main>
