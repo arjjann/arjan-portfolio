@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 
 // Helper to ensure basePath is applied in production for HTML <img> tags
-const basePath = process.env.NODE_ENV === 'production' ? '/arjan-portfolio' : '';
+const basePath = '';
 const getImagePath = (path: string) => {
   const cleanPath = path.startsWith('/') ? path : `/${path}`;
   return `${basePath}${cleanPath}`;
